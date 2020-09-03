@@ -21,9 +21,12 @@ var Message struct {
 func ChallengeUpdate(ctx context.Context, m PubSubMessage) {
 
 	data := string(m.Data) // Automatically decoded from base64.
+	log.Printf("Hello, %s!", data)
 
 	message := &Message
+	log.Println(message)
 	err := json.Unmarshal([]byte(data), message)
+	log.Printf(message.ReceiverUserId, message.Score)
 	if err != nil {
 		log.Printf("Error While Parsing Request Body!")
 		return
