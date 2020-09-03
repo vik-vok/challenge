@@ -2,6 +2,7 @@
 package p
 
 import (
+	"fmt"
 	"net/http"
 )
 
@@ -16,4 +17,5 @@ func ChallengeCreate(w http.ResponseWriter, r *http.Request) {
 	// 4. Cast Challenge to JSON
 
 	// 5. Send response
+	_, _ = fmt.Fprint(w, "Hello, World!\n")
 }
