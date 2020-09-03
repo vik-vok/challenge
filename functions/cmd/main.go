@@ -11,7 +11,7 @@ import (
 
 func main() {
 	ctx := context.Background()
-	if err := funcframework.RegisterHTTPFunctionContext(ctx, "/", p.ChallengeCreate); err != nil {
+	if err := funcframework.RegisterHTTPFunctionContext(ctx, "/", p.ChallengeGet); err != nil {
 		log.Fatalf("funcframework.RegisterHTTPFunctionContext: %v\n", err)
 	}
 
