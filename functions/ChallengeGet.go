@@ -38,6 +38,7 @@ func ChallengeGet(w http.ResponseWriter, r *http.Request) {
 		ids = []*datastore.Key{}
 	}
 
+	// Iterate over objects and append ID-s
 	for i := range challenges {
 		challenges[i].ChallengeId = ids[i].ID
 	}

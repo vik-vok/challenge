@@ -4,6 +4,7 @@ REPO_OWNER="vik-vok"
 
 array=(
   'challenge-create':'ChallengeCreate'
+  'challenge-get':'ChallengeGet'
 )
 
 for i in "${array[@]}"; do
