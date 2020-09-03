@@ -1,0 +1,7 @@
+steps:
+  - name: 'mirror.gcr.io/library/golang'
+    args: ['go', 'version']
+
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args: ['functions', 'deploy', '${_CLOUD_FUNC_NAME}', '--runtime=go113', '--trigger-http', '--region=europe-west1' ,'--entry-point=${_GO_FUNC_NAME}']
+    dir: 'functions'
