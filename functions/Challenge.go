@@ -8,7 +8,7 @@ type Challenge struct {
 	OriginalVoiceId int64     `json:"originalVoiceId"`
 	SenderUserId    string    `json:"senderUserId"`
 	ReceiverUserId  string    `json:"receiverUserId"`
-	Score           int64     `json:"score"`
+	Score           float32   `json:"score"`
 	Accomplished    bool      `json:"accomplished"`
 	Created         time.Time `json:"created"`
 }
