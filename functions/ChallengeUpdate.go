@@ -16,7 +16,7 @@ type PubSubMessage struct {
 var Message struct {
 	ReceiverUserId  string  `json:"receiverUserId"`
 	OriginalVoiceId int64   `json:"originalVoiceId,string"`
-	Score           float32 `json:"score"`
+	Score           int64 `json:"score"`
 }
 
 func ChallengeUpdate(ctx context.Context, m PubSubMessage) error {
