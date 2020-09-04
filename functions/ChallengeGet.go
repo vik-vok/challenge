@@ -12,7 +12,7 @@ import (
 func ChallengeGet(w http.ResponseWriter, r *http.Request) {
 	// 1. Write ID from request into struct d
 	var d struct {
-		ReceiverUserId int64 `json:"receiverUserId"`
+		ReceiverUserId string `json:"receiverUserId"`
 	}
 	if err := json.NewDecoder(r.Body).Decode(&d); err != nil {
 		_, _ = fmt.Fprint(w, "Error While Parsing Request Body!")

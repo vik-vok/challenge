@@ -15,7 +15,7 @@ type PubSubMessage struct {
 
 var Message struct {
 	ReceiverUserId  string  `json:"receiverUserId"`
-	OriginalVoiceId string  `json:"originalVoiceId"`
+	OriginalVoiceId int64   `json:"originalVoiceId,string"`
 	Score           float32 `json:"score"`
 }
 
@@ -26,7 +26,7 @@ func ChallengeUpdate(ctx context.Context, m PubSubMessage) error {
 	message := &Message
 	err := json.Unmarshal([]byte(data), message)
 	log.Printf(message.ReceiverUserId)
-	log.Printf(message.OriginalVoiceId)
+	log.Printf("%d", message.OriginalVoiceId)
 	log.Printf("%.6f", message.Score)
 	if err != nil {
 		log.Printf("Error While Parsing Request Body!")
