@@ -15,7 +15,14 @@ func ChallengeGet(w http.ResponseWriter, r *http.Request) {
 		ReceiverUserId string `json:"receiverUserId"`
 	}
 	if err := json.NewDecoder(r.Body).Decode(&d); err != nil {
-		d.ReceiverUserId = r.FormValue("receiverUserId")
+		arr := r.URL.Query()["receiverUserId"]
+		if len(arr) < 1 {
+			_, _ = fmt.Fprint(w, "Error While Parsing Request Body!\n URL: "+r.URL.String())
+			w.WriteHeader(http.StatusInternalServerError)
+			return
+		}
+
+		d.ReceiverUserId = arr[0]
 		if d.ReceiverUserId == "" {
 			_, _ = fmt.Fprint(w, "Error While Parsing Request Body!\n URL: "+r.URL.String())
 			w.WriteHeader(http.StatusInternalServerError)
