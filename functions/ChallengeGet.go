@@ -15,8 +15,12 @@ func ChallengeGet(w http.ResponseWriter, r *http.Request) {
 		ReceiverUserId string `json:"receiverUserId"`
 	}
 	if err := json.NewDecoder(r.Body).Decode(&d); err != nil {
-		_, _ = fmt.Fprint(w, "Error While Parsing Request Body!")
-		return
+		d.ReceiverUserId = r.FormValue("voiceId")
+		if d.ReceiverUserId == "" {
+			_, _ = fmt.Fprint(w, "Error While Parsing Request Body!\n URL: "+r.URL.String())
+			w.WriteHeader(http.StatusInternalServerError)
+			return
+		}
 	}
 
 	// 2. Connect to database
